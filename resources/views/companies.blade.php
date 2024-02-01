@@ -53,7 +53,7 @@
                      </div>
                 </div>
             @empty
-                <div class="col">
+                 <div class="col">
                     <div class="alert alert-warning" role="alert">
                         No anoonce found!
                     </div>
