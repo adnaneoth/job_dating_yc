@@ -50,7 +50,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                     </div>
                 </div>
             @empty
                 <div class="col">
