@@ -3,8 +3,9 @@
 @section('content')
     <div class="container">
         <h2>All companie</h2>
-        <button class="bg-success text-light"><a class="text-light"  href="{{route('add')}}">Add</a></button>
-        
+        <a href="{{ route('addcompanie') }}">
+            <button type="button" class="btn btn-primary">Add</button>
+        </a>        
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             @forelse ($companies as $companie)
                 <div class="col">
@@ -13,10 +14,11 @@
                         <div class="card-body">
                             <h5 class="card-name">{{ $companie->name }}</h5>
                             <p class="card-text">{{ $companie->description }}</p>
+                            <p class="card-text">{{'à. '. $companie->location }}</p>
                         </div>
                         <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center">
                             <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#updateModal{{ $companie->id }}">Edit</button>
-                            <form action="{{ route('delete', $companie->id) }}" method="post">
+                            <form action="{{ route('deletecompanie', $companie->id) }}" method="post">
                                 @method('DELETE')
                                 @csrf
                                 <button type="submit" class="btn btn-outline-danger">Delete</button>
@@ -34,7 +36,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="{{ route('update', $companie->id) }}" method="POST">
+                                <form action="{{ route('updatecompanie', $companie->id) }}" method="POST">
                                     @method('PUT')
                                     @csrf
                                     <div class="mb-3">
@@ -44,6 +46,11 @@
                                     <div class="mb-3">
                                         <label for="update-description" class="form-label">Description</label>
                                         <textarea class="form-control" id="update-description" name="description" rows="4">{{ $companie->description }}</textarea>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="update-location" class="form-label">location</label>
+                                        <textarea class="form-control" id="update-location" name="location" rows="4">{{ $companie->location }}</textarea>
                                     </div>
                                     
                                     <button type="submit" class="btn btn-primary">Update companie</button>

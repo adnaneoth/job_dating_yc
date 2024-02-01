@@ -15,7 +15,7 @@
                 <textarea class="form-control" id="description" name="description" rows="4" style="border-radius: 10px;"></textarea>
             </div>
             <div class="mb-3">
-                <label for="companie_id" class="form-label">companie_id:</label>
+                <label for="companie_id" class="form-label">companie_name:</label>
                 <select name="companie_id" class="form-select">
                     <option value=""></option>
                     @foreach($companies as $companie)

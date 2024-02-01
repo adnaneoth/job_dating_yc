@@ -21,7 +21,8 @@ class CompanieController extends Controller
      */
     public function create()
     {
-        //
+        $companies = Companie::all(); 
+        return view('addcompanie', compact('companies'));
     }
 
     /**
@@ -29,7 +30,16 @@ class CompanieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "name" => "required",
+            "description" => "required",
+            "location" => "required",
+            
+        ]);
+
+        Companie::create($request->all());
+
+        return redirect()->route("addcompanie");
     }
 
     /**
@@ -51,16 +61,34 @@ class CompanieController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Companie $companie)
+    public function update(Request $request, $id)
     {
-        //
+        $annonce = Companie::find($id);
+
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'location' => 'required',
+
+        ]);
+
+        $annonce->update([
+            "name" => $request->name,
+            "description" => $request->description,
+            'location' => $request->location,
+
+        ]);
+
+        return redirect()->route('companie');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Companie $companie)
+    public function destroy($id)
     {
-        //
+        $annonce = Companie::find($id);
+        $annonce->delete();
+        return redirect()->route('companie');
     }
 }

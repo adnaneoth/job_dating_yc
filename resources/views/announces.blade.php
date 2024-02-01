@@ -3,8 +3,9 @@
 @section('content')
     <div class="container">
         <h2>All annonce</h2>
-        <button class="bg-success text-light"><a class="text-light"  href="{{route('add')}}">Add</a></button>
-        
+        <a href="{{route('add')}}">
+            <button type="button" class="btn btn-primary">Add</button>
+        </a>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             @forelse ($announcments as $annonce)
                 <div class="col">
