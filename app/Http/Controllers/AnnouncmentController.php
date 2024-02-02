@@ -18,6 +18,13 @@ class AnnouncmentController extends Controller
         return view('announces', compact('announcments', 'companies'));
     }
 
+    public function indexH()
+    {
+        $announcments = Announcment::all();
+        $companies = Companie::all();
+        return view('welcome', compact('announcments', 'companies'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

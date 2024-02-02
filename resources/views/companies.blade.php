@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>All companie</h2>
+        <h2>companies</h2>
         <a href="{{ route('addcompanie') }}">
             <button type="button" class="btn btn-primary">Add</button>
         </a>        
