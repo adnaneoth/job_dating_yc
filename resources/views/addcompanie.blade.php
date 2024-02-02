@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2 style="text-align: center; margin-bottom: 30px;  font-family: 'Indie Flower', cursive;">Create annonce</h2>
+        <h2 style="text-align: center; margin-bottom: 30px;  font-family: 'Indie Flower', cursive;">Create companie</h2>
        
         <form action="{{ route('storecompanie') }}" method="POST" style="max-width: 500px; margin: 0 auto;">
             @csrf

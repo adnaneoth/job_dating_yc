@@ -3,7 +3,16 @@
 @section('content')
     <div class="container">
         <h2 style="text-align: center; margin-bottom: 30px;  font-family: 'Indie Flower', cursive;">Create annonce</h2>
-       
+        @if($errors->any())
+        <div class="alert alert-danger">
+          @foreach ($errors->all() as $error)
+              <ul>
+                  <li>{{$error}}</li>
+              </ul>
+          @endforeach
+        </div>
+        @endif
+        
         <form action="{{ route('store') }}" method="POST" style="max-width: 500px; margin: 0 auto;">
             @csrf
             <div class="mb-3">
@@ -37,12 +46,6 @@
 
 
 
-{{-- @if($errors->any())
-<div class="alert alert-danger">
-  @foreach ($errors->all() as $error)
-      <ul>
-          <li>{{$error}}</li>
-      </ul>
-  @endforeach
-</div>
-@endif --}}
+
+
+

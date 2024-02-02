@@ -49,7 +49,7 @@ class AnnouncmentController extends Controller
     {
         $annonce = Announcment::find($id);
         $annonce->delete();
-        return redirect()->route('companie');
+        return redirect()->route('afficher');
     }
 
    
