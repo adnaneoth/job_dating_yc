@@ -8,6 +8,7 @@
             @forelse ($announcments as $annonce)
                 <div class="col">
                     <div class="card h-100 border border-2 border-primary rounded-3 shadow">
+                        
                     <img src='https://www.mee-mife.fr/wp-content/uploads/2022/09/jobdating.jpg' class="card-img-top" alt="Book Image">
                         <div class="card-body">
                             <h5 class="card-title">{{ $annonce->title }}</h5>
