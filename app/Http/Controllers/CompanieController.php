@@ -11,7 +11,7 @@ class CompanieController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    { 
+    {
         $companies = Companie::all();
         return view('companies', compact('companies'));
     }
@@ -21,7 +21,7 @@ class CompanieController extends Controller
      */
     public function create()
     {
-        $companies = Companie::all(); 
+        $companies = Companie::all();
         return view('addcompanie', compact('companies'));
     }
 
@@ -34,7 +34,7 @@ class CompanieController extends Controller
             "name" => "required",
             "description" => "required",
             "location" => "required",
-            
+
         ]);
 
         Companie::create($request->all());

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AnnouncmentController;
 use App\Http\Controllers\CompanieController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\SkillController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AnnouncmentController::class, 'indexH'])->name('afficherH');
-// Route::get('/', function(){
 
-//     return view('profile');
-// });
+Route::get('/', [AnnouncmentController::class, 'indexH'])->name('afficherH');
 
 Route::middleware('auth')->group(function () {
     Route::get('/add', [AnnouncmentController::class, 'create'])->name('add');
@@ -31,12 +30,27 @@ Route::middleware('auth')->group(function () {
     Route::delete('/delete/{id}', [AnnouncmentController::class, 'delete'])->name('delete');
     Route::put('/update/{id}', [AnnouncmentController::class, 'update'])->name('update');
 
-
+    
     Route::get('/companie', [CompanieController::class, 'index'])->name('companie')->middleware('auth');
     Route::get('/addcompanie', [CompanieController::class, 'create'])->name('addcompanie');
     Route::post('/companiestore', [CompanieController::class, 'store'])->name('storecompanie');
     Route::delete('/deletecompanie/{id}', [CompanieController::class, 'destroy'])->name('deletecompanie');
     Route::put('/updatecompanie/{id}', [CompanieController::class, 'update'])->name('updatecompanie');
+    
+
+    Route::put('/editprofil/{id}', [ProfilController::class, 'update'])->name('editprofil');
+    Route::get('/profil', [ProfilController::class, 'index'])->name('profil')->middleware('auth');
+
+
+    Route::get('/allskills', [SkillController::class, 'index'])->name('allskills');
+    Route::delete('/deleteskill/{id}', [SkillController::class, 'destroy'])->name('deleteskill');
+    Route::put('/updateskill/{id}', [SkillController::class, 'update'])->name('updateskill');
+    Route::get('/addskill', [SkillController::class, 'create'])->name('addskill');
+    Route::post('/storeskill', [SkillController::class, 'store'])->name('storeskill');
+
+
+    Route::post('/apply', [AnnouncmentController::class, 'apply'])->name('apply');
+    Route::post('/remove', [AnnouncmentController::class, 'remove'])->name('remove');
 
 });
 
